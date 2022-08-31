@@ -1,0 +1,136 @@
+@use "../util" as u;
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: u.rem(30);
+
+  @include u.breakpoint-up(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include u.breakpoint-up(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: var(--default-card-bg);
+  color: var(--default-text1);
+  text-align: center;
+  border-radius: u.rem(5);
+  padding: u.rem(25);
+  transition: background 150ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--default-card-hover);
+  }
+
+  &--facebook {
+    border-top: u.rem(5) solid var(--facebook);
+  }
+
+  &--twitter {
+    border-top: u.rem(5) solid var(--twitter);
+  }
+
+  &--instagram {
+    padding-top: u.rem(30);
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: u.rem(5);
+      background: linear-gradient(
+        255deg,
+        var(--instagram-end),
+        var(--instagram-middle) 50.91%,
+        var(--instagram-start) 100%
+      );
+    }
+  }
+
+  &--youtube {
+    border-top: u.rem(5) solid var(--youtube);
+  }
+
+  &__platform {
+    display: flex;
+    height: u.rem(20);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: u.rem(28);
+    margin-top: u.rem(5);
+  }
+
+  &__subtitle {
+    font-size: u.rem(14);
+    font-weight: 700;
+    color: var(--default-text1);
+  }
+
+  &__icon {
+    margin-right: u.rem(8);
+  }
+
+  &__username {
+    font-size: u.rem(12);
+    font-weight: 700;
+    color: var(--default-text1);
+  }
+
+  &__followers {
+    margin-bottom: u.rem(25);
+  }
+
+  &__count {
+    color: var(--default-text2);
+    font-weight: 700;
+    letter-spacing: u.rem(-2);
+    line-height: 1;
+    margin-bottom: u.rem(4);
+
+    &--big {
+      font-size: u.rem(56);
+    }
+
+    &--small {
+      font-size: u.rem(32);
+    }
+  }
+
+  &__label {
+    font-size: u.rem(12);
+    letter-spacing: u.rem(5);
+    font-weight: 400;
+    color: var(--default-text1);
+    text-transform: uppercase;
+  }
+
+  &__change {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: u.rem(12);
+    font-weight: 700;
+
+    &--up {
+      color: var(--lime-green);
+    }
+
+    &--down {
+      color: var(--bright-red);
+    }
+
+    img {
+      margin-right: u.rem(4);
+    }
+  }
+}
